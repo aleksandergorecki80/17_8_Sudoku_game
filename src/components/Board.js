@@ -17,7 +17,7 @@ class Board extends Component {
     console.log(this.state.numbers);
     
    const numbersList = this.state.numbers.map((number, key) => ( 
-    <Title key={key} number={number}/>
+    <Title index={key} number={number}/>
     ));
     
     return (

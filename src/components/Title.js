@@ -21,18 +21,20 @@ class Title extends Component {
 	}
 
   render() {
-  	console.log(this.state.value);
+  	console.log(this.props.index + 'index');
+  	console.log(this.props.number);
     return (
-		
+		<div>
+
 			<input 
 				type="number" 
 				name="field" 
 				min="1" max="9" 
 				onChange={this.onAddValue.bind(this)}
 				onKeyUp={this.handleKeyUp}
-				value={this.state.value}
+				value={this.state.value || ''}
 			/>
-		
+		</div>
 		);
 	}
 }
