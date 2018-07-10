@@ -7,28 +7,34 @@ import sudoku from 'sudoku-umd';
 
 const sudokuV = sudoku;
 
-console.log(sudokuV);
-console.log(sudokuV.DIGITS);
+//console.log(sudokuV);
+//console.log(sudokuV.DIGITS);
 const sudokuEasy = sudoku.generate("easy");
 const sudokuMedium = sudoku.generate("medium");
 const sudokuHard = sudoku.generate("hard");
 
-console.log(sudokuEasy);
-console.log(sudokuMedium);
-console.log(sudokuHard);
+//console.log(sudokuEasy);
+//console.log(sudokuMedium);
+//console.log(sudokuHard);
+
+const sudokuEasyTab = sudokuEasy.split('');
+//console.log(sudokuEasyTab);
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			text: ""
+			//initialBoard: "",
+			initialBoard: sudoku.generate("easy"), // do zmiany pozniej
+			board: ""
 		};
 	}
   render() {
+  	console.log(this.state.initialBoard);
     return (
 		<div className="App">
 		   <h1>Sudoku</h1>
-		   <Board />
+		   <Board numbers = {this.state.initialBoard}/>
 		   <div className="buttons">
 		       <button>Check</button>
 		       <button>New Game</button>

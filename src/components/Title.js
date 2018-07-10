@@ -4,7 +4,7 @@ class Title extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: ""
+			value: this.props.number
 		};
 	}
 
@@ -23,15 +23,16 @@ class Title extends Component {
   render() {
   	console.log(this.state.value);
     return (
-		<div>
+		
 			<input 
 				type="number" 
 				name="field" 
 				min="1" max="9" 
 				onChange={this.onAddValue.bind(this)}
 				onKeyUp={this.handleKeyUp}
+				value={this.state.value}
 			/>
-		</div>
+		
 		);
 	}
 }
