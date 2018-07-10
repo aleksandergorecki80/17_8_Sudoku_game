@@ -1,0 +1,15 @@
+.TodoApp {
+  background-color: white;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100vw;
+  height: 80vh;
+}
+h2, h3 {
+  text-align: center;
+}
