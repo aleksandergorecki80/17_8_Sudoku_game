@@ -13,6 +13,7 @@ class Title extends Component {
 		this.setState({
 			value: event.target.value
 		});
+		//tu musi być wywołanie funkcji callback
 	}
 
 	handleKeyUp(event){
