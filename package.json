@@ -28,6 +28,7 @@
   },
   "description": "https://github.com/aleksandergorecki80/17_8_Sudoku_game/",
   "dependencies": {
+    "sudoku-umd": "^1.0.1",
     "uuid": "^3.2.1"
   }
 }
