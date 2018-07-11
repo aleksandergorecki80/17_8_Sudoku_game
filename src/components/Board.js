@@ -8,22 +8,14 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numbers: this.props.numbers.split(''),
-      recievedValue: '',
-      recievedIndex: ''
+      numbers: this.props.numbers.split('')
     };
   }
 
 getValueFrom(attr){
-  /*
-  this.setState({
-    recievedValue: attr.value,
-    recievedIndex: attr.index
-  });
-  */
   console.log(attr.value + 'value z getValueFrom');
   console.log(attr.index + 'index z getValueFrom');
-console.log(this.state.numbers);
+  console.log(this.state.numbers);
 
   const updatedArray = this.state.numbers.map((number, key) => {
     if (key === attr.index){
@@ -35,13 +27,18 @@ console.log(this.state.numbers);
   console.log(updatedArray);
 
   //this.updateArray();
+  this.arrayToString(updatedArray);
 }
 
+arrayToString(newArray){
+  console.log(newArray.join(''));
+  return newArray.join('');
+}
 
   render() {
+
     //const numbersList = this.props.numbers.split('');
-    console.log(this.state.recievedValue + 'tu');
-   console.log(this.state.recievedIndex + 'tu');
+
     
    const numbersList = this.state.numbers.map((number, key) => ( 
     <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)}/>

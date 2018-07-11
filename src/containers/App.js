@@ -27,7 +27,7 @@ class App extends Component {
 	}
 
   render() {
-  	//console.log(this.state.initialBoard);
+  	console.log(this.state.initialBoard);
     return (
 		<div className="App">
 		   <h1>Sudoku</h1>
