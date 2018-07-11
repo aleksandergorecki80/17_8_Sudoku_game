@@ -23,10 +23,6 @@ class Title extends Component {
 		const data = {value: this.state.value, index:this.state.index}
 		this.props.getValue(data);
 	}
-	kKi(){
-		console.log('kkkkkkkkkkkiiiiiiiiiii');
-	}
-
 	 componentDidUpdate(prevProps, prevState) {
  //	console.log( "Component " + this.props.componentName + " did update", prevProps, prevState);
 //console.log(this.state.value + ' z componentDidUpdate');
@@ -48,8 +44,6 @@ class Title extends Component {
 				onBlur={this.onSubmit.bind(this)}
 				value={this.state.value || ''}
 			/>
-			<button onClick={this.onSubmit.bind(this)} >zapisz</button>
-			
 		</div>
 		);
 	}

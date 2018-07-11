@@ -15,14 +15,26 @@ class Board extends Component {
   }
 
 getValueFrom(attr){
-  
+  /*
   this.setState({
     recievedValue: attr.value,
     recievedIndex: attr.index
   });
-  
-  console.log(attr.value + 'z getValueFrom');
-  console.log(attr.index + 'z getValueFrom');
+  */
+  console.log(attr.value + 'value z getValueFrom');
+  console.log(attr.index + 'index z getValueFrom');
+console.log(this.state.numbers);
+
+  const updatedArray = this.state.numbers.map((number, key) => {
+    if (key === attr.index){
+      return attr.value
+    } else {
+      return number;
+    }
+  });
+  console.log(updatedArray);
+
+  //this.updateArray();
 }
 
 
