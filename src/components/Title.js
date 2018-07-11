@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LifeStages from "./LifeStages";
 
 class Title extends Component {
 	constructor(props) {
@@ -6,6 +7,7 @@ class Title extends Component {
 		this.state = {
 			value: this.props.number,
 			index: this.props.index
+
 		};
 	}
 
@@ -13,19 +15,27 @@ class Title extends Component {
 		this.setState({
 			value: event.target.value
 		});
-		//tu musi być wywołanie funkcji callback
+	}
+	onSubmit(){
+		//console.log('kki');
+		console.log(this.state.value);
+		console.log(this.state.index);
+		const data = {value: this.state.value, index:this.state.index}
+		this.props.getValue(data);
+	}
+	kKi(){
+		console.log('kkkkkkkkkkkiiiiiiiiiii');
 	}
 
-	handleKeyUp(event){
-		if(event.keyCode ===13){
-			this.props.addNumber(this.state.value);
-		}
-	}
+	 componentDidUpdate(prevProps, prevState) {
+ //	console.log( "Component " + this.props.componentName + " did update", prevProps, prevState);
+//console.log(this.state.value + ' z componentDidUpdate');
+
+//this.props.getValue(this.state.value);
+
+ }
 
   render() {
-  	//console.log(this.state.key + 'index');
-  	console.log(this.props.index);
-  	console.log(this.props.number);
     return (
 		<div>
 			{this.state.index}
@@ -35,8 +45,11 @@ class Title extends Component {
 				min="1" max="9" 
 				onChange={this.onAddValue.bind(this)}
 				onKeyUp={this.handleKeyUp}
+				onBlur={this.onSubmit.bind(this)}
 				value={this.state.value || ''}
 			/>
+			<button onClick={this.onSubmit.bind(this)} >zapisz</button>
+			
 		</div>
 		);
 	}
