@@ -14,12 +14,12 @@ class Board extends Component {
 
 
   componentWillReceiveProps(nextProps) {
-    this.setState({numbers: nextProps.numbers})
+    this.setState({numbers: nextProps.numbers.split('')})
   }
 
 
   /* ponizej az ro render jest dobrze NIE RUSZAĆ !!!!!!!!!!*/
-/*
+
 getValueFrom(attr){
   console.log(attr.value + 'value z getValueFrom');
   console.log(attr.index + 'index z getValueFrom');
@@ -41,11 +41,15 @@ arrayToString(newArray){
   console.log(newArray.join(''));
   return newArray.join('');
 }
-*/
+
   render() {
+    var numbersList = '';
     if (this.state.numbers !== ''){
     console.log(this.state.numbers + 'this.state.numbers');
     console.log('POKA poka');
+       numbersList = this.state.numbers.map((number, key) => ( 
+    <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)}/>
+    )); 
     }
     /*
    // const numbers = this.props.numbers.split('');
@@ -56,7 +60,7 @@ arrayToString(newArray){
     return (
     <div className="Board">
        <br />
-
+        {numbersList}
        <LifeStages componentName={'Board'}/>
     </div>
     );
