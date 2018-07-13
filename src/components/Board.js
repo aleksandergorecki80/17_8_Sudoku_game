@@ -38,18 +38,22 @@ getValueFrom(attr){
 }
 
 arrayToString(newArray){
-  console.log(newArray.join(''));
+  //console.log(newArray.join(''));
   return newArray.join('');
 }
 
   render() {
     var numbersList = '';
     if (this.state.numbers !== ''){
-    console.log(this.state.numbers + 'this.state.numbers');
-    console.log('POKA poka');
-       numbersList = this.state.numbers.map((number, key) => ( 
-    <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)}/>
-    )); 
+   // console.log(this.state.numbers + 'this.state.numbers');
+    //console.log('POKA poka');
+       numbersList = this.state.numbers.map((number, key) =>  {
+            if (number === '.'){
+              number = ''
+            } 
+           return <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)}/>
+  }); 
+
     }
     /*
    // const numbers = this.props.numbers.split('');

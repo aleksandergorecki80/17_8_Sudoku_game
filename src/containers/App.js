@@ -41,8 +41,8 @@ class App extends Component {
 	}
 
   render() {
-  	console.log(this.state.initialBoard + ' initialBoard');
-  	console.log(this.state.board + ' board');
+  	//console.log(this.state.initialBoard + ' initialBoard');
+  	//console.log(this.state.board + ' board');
     return (
 		<div className="App">
 		   <h1>Sudoku</h1>
