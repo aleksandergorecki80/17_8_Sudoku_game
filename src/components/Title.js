@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LifeStages from "./LifeStages";
+import './Title.css';
 
 class Title extends Component {
 	constructor(props) {
@@ -32,10 +33,9 @@ class Title extends Component {
  }
 
   render() {
-    return (
-		<div>
-			{this.state.index}
-			<input 
+  	const printInput = (
+		this.state.value === '' ? 
+  			<input 
 				type="number" 
 				name="field" 
 				min="1" max="9" 
@@ -43,7 +43,13 @@ class Title extends Component {
 				onKeyUp={this.handleKeyUp}
 				onBlur={this.onSubmit.bind(this)}
 				value={this.state.value || ''}
-			/>
+			/> 
+			: <span>{this.state.value}</span>
+		);
+    return (
+		<div>
+			{this.state.index}
+			{printInput}
 		</div>
 		);
 	}
