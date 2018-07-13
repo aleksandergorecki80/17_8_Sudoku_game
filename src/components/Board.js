@@ -44,14 +44,18 @@ arrayToString(newArray){
 
   render() {
     var numbersList = '';
+    var blocked = '';
     if (this.state.numbers !== ''){
    // console.log(this.state.numbers + 'this.state.numbers');
     //console.log('POKA poka');
        numbersList = this.state.numbers.map((number, key) =>  {
             if (number === '.'){
-              number = ''
-            } 
-           return <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)}/>
+              number = '';
+              blocked = false;
+            } else {
+              blocked = true;
+            }
+           return <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)} blocked={blocked}/>
   }); 
 
     }

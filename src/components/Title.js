@@ -7,7 +7,8 @@ class Title extends Component {
 		super(props);
 		this.state = {
 			value: this.props.number,
-			index: this.props.index
+			index: this.props.index,
+			blocked: this.props.blocked
 
 		};
 	}
@@ -34,7 +35,7 @@ class Title extends Component {
 
   render() {
   	const printInput = (
-		this.state.value === '' ? 
+		this.state.blocked === false ? 
   			<input 
 				type="number" 
 				name="field" 
@@ -46,9 +47,11 @@ class Title extends Component {
 			/> 
 			: <span>{this.state.value}</span>
 		);
+  	console.log(this.state.blocked)
     return (
 		<div>
 			{this.state.index}
+			{this.state.blocked}
 			{printInput}
 		</div>
 		);
