@@ -13,16 +13,17 @@ class App extends Component {
 		super(props);
 		this.state = {
 			//initialBoard: sudoku.generate("easy"), // do zmiany pozniej
-			initialBoard: '', // do zmiany pozniej
+			initialBoard: '', 
 			board: ""
 		};
 	}
 
 
 	newGame() {
-	
+		const newGame = sudoku.generate("easy")
 		this.setState({
-			initialBoard: sudoku.generate("easy")
+			initialBoard: newGame,
+			board: newGame
 		});
 		
 	}
@@ -53,7 +54,7 @@ class App extends Component {
 		       <button>Solve</button>
 		       <button onClick={this.restartGame.bind(this)}>Restart</button>
 		   </div>
-		   <Board numbers = {this.state.initialBoard} newNumbers={this.setNewNumbers.bind(this)}/>
+		   <Board numbers = {this.state.board} newNumbers={this.setNewNumbers.bind(this)}/>
 			
 		</div>
     );
