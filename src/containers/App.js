@@ -77,7 +77,7 @@ arrayToString(newArray){
 		   </div>
 		   <Board numbers = {this.state.board} 
 		   newNumbers={this.getNewNumbers.bind(this)}/>
-			 <LifeStages componentName={'App'}/>
+			 
 		</div>
     );
   }

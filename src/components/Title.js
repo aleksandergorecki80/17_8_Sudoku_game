@@ -13,6 +13,10 @@ class Title extends Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+    this.setState({value: nextProps.number})
+  }
+
 	onAddValue(event) {
 		this.setState({
 			value: event.target.value
@@ -53,6 +57,7 @@ class Title extends Component {
 			{this.state.index}
 			{this.state.blocked}
 			{printInput}
+			<LifeStages componentName={'Board'}/>
 		</div>
 		);
 	}
