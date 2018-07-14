@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader";
 import Title from "./Title";
 import LifeStages from "../components/LifeStages"
 
@@ -47,4 +46,4 @@ getValueFrom(attr){
 
 
 
-export default hot(module)(Board);
+export default Board;

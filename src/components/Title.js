@@ -23,19 +23,9 @@ class Title extends Component {
 		});
 	}
 	onSubmit(){
-		//console.log('kki');
-		//console.log(this.state.value);
-		//console.log(this.state.index);
 		const data = {value: this.state.value, index:this.state.index}
 		this.props.getValue(data);
 	}
-	 componentDidUpdate(prevProps, prevState) {
- //	console.log( "Component " + this.props.componentName + " did update", prevProps, prevState);
-//console.log(this.state.value + ' z componentDidUpdate');
-
-//this.props.getValue(this.state.value);
-
- }
 
   render() {
   	const printInput = (
@@ -51,13 +41,11 @@ class Title extends Component {
 			/> 
 			: <span>{this.state.value}</span>
 		);
-  	//console.log(this.state.blocked)
     return (
 		<div>
 			{this.state.index}
 			{this.state.blocked}
 			{printInput}
-			<LifeStages componentName={'Board'}/>
 		</div>
 		);
 	}

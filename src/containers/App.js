@@ -44,7 +44,7 @@ class App extends Component {
       return number;
     }
   });
-  //console.log(updatedArray);
+ // console.log(updatedArray);
   //console.log('updatedArray');
   this.arrayToString(updatedArray);
   this.setNewNumbers(this.arrayToString(updatedArray));
@@ -77,7 +77,6 @@ arrayToString(newArray){
 		   </div>
 		   <Board numbers = {this.state.board} 
 		   newNumbers={this.getNewNumbers.bind(this)}/>
-			 
 		</div>
     );
   }
