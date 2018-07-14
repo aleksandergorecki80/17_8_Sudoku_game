@@ -30,9 +30,30 @@ class App extends Component {
 
 	restartGame(){
 		this.setState({
-			initialBoard: this.state.initialBoard
+			board: this.state.initialBoard
 		});
 	}
+
+
+	getNewNumbers(numbers){
+		var updatedArray = this.state.board.split('');
+	  		updatedArray = updatedArray.map((number, key) => {
+    if (key === numbers.index){
+      return numbers.value
+    } else {
+      return number;
+    }
+  });
+  //console.log(updatedArray);
+  //console.log('updatedArray');
+  this.arrayToString(updatedArray);
+  this.setNewNumbers(this.arrayToString(updatedArray));
+}
+
+arrayToString(newArray){
+  //console.log(newArray.join(''));
+  return newArray.join('');
+}
 
 	setNewNumbers(string){
 		this.setState({
@@ -41,8 +62,8 @@ class App extends Component {
 	}
 
   render() {
-  	//console.log(this.state.initialBoard + ' initialBoard');
-  	//console.log(this.state.board + ' board');
+  	console.log(this.state.initialBoard + ' initialBoard');
+  	console.log(this.state.board + ' board');
     return (
 		<div className="App">
 		   <h1>Sudoku</h1>
@@ -54,8 +75,9 @@ class App extends Component {
 		       <button>Solve</button>
 		       <button onClick={this.restartGame.bind(this)}>Restart</button>
 		   </div>
-		   <Board numbers = {this.state.board} newNumbers={this.setNewNumbers.bind(this)}/>
-			
+		   <Board numbers = {this.state.board} 
+		   newNumbers={this.getNewNumbers.bind(this)}/>
+			 <LifeStages componentName={'App'}/>
 		</div>
     );
   }

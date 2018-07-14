@@ -20,8 +20,8 @@ class Title extends Component {
 	}
 	onSubmit(){
 		//console.log('kki');
-		console.log(this.state.value);
-		console.log(this.state.index);
+		//console.log(this.state.value);
+		//console.log(this.state.index);
 		const data = {value: this.state.value, index:this.state.index}
 		this.props.getValue(data);
 	}
@@ -47,7 +47,7 @@ class Title extends Component {
 			/> 
 			: <span>{this.state.value}</span>
 		);
-  	console.log(this.state.blocked)
+  	//console.log(this.state.blocked)
     return (
 		<div>
 			{this.state.index}

@@ -24,25 +24,11 @@ getValueFrom(attr){
   console.log(attr.value + 'value z getValueFrom');
   console.log(attr.index + 'index z getValueFrom');
   console.log(this.state.numbers);
-
-  const updatedArray = this.state.numbers.map((number, key) => {
-    if (key === attr.index){
-      return attr.value
-    } else {
-      return number;
-    }
-  });
-  console.log(updatedArray);
-  console.log('updatedArray');
-  this.props.newNumbers(this.arrayToString(updatedArray));
-}
-
-arrayToString(newArray){
-  //console.log(newArray.join(''));
-  return newArray.join('');
+  this.props.newNumbers(attr);
 }
 
   render() {
+    /*
     var numbersList = '';
     var blocked = '';
     if (this.state.numbers !== ''){
@@ -55,21 +41,30 @@ arrayToString(newArray){
             } else {
               blocked = true;
             }
-           return <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)} blocked={blocked}/>
+           return <Title key={key} index={key} number={number} 
+           getValue={this.getValueFrom.bind(this)} blocked={blocked}/>
   }); 
 
     }
-    /*
-   // const numbers = this.props.numbers.split('');
-   const numbersList = this.state.numbers.map((number, key) => ( 
-    <Title key={key} index={key} number={number} getValue={this.getValueFrom.bind(this)}/>
-    ));   
-*/
+    */
+    var blocked = '';
+    const numbers = this.props.numbers.split('');
+   const numbersList = numbers.map((number, key) =>  {
+            if (number === '.'){
+              number = '';
+              blocked = false;
+            } else {
+              blocked = true;
+            }
+           return <Title key={key} index={key} number={number} 
+           getValue={this.getValueFrom.bind(this)} blocked={blocked}/>
+  });   
+
     return (
     <div className="Board">
        <br />
         {numbersList}
-       <LifeStages componentName={'Board'}/>
+      
     </div>
     );
   }
