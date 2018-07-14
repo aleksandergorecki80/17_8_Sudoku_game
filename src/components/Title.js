@@ -17,6 +17,14 @@ class Title extends Component {
     this.setState({value: nextProps.number})
   }
 
+  	handleKeyUp(event){
+  		if (event.target.value > 9 || event.target.value < 1){
+  			this.setState({
+  				value: ''
+  			});
+  		}
+  	}
+
 	onAddValue(event) {
 		this.setState({
 			value: event.target.value
@@ -34,8 +42,9 @@ class Title extends Component {
 				type="number" 
 				name="field" 
 				min="1" max="9" 
+
 				onChange={this.onAddValue.bind(this)}
-				onKeyUp={this.handleKeyUp}
+				onKeyUp={this.handleKeyUp.bind(this)}
 				onBlur={this.onSubmit.bind(this)}
 				value={this.state.value || ''}
 			/> 
