@@ -8,16 +8,24 @@ class Title extends Component {
 		this.state = {
 			value: this.props.number,
 			index: this.props.index,
-			blocked: this.props.blocked
+			blocked: this.props.blocked,
+			playOn: this.props.playOn
 
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
     this.setState({
-    	value: nextProps.number,
-    	blocked: nextProps.blocked
-    })
+    	value: nextProps.number
+    });
+   if (nextProps.playOn !== this.state.playOn){
+    	    this.setState({
+    	blocked: nextProps.blocked,
+    	playOn: nextProps.playOn
+    });
+    	    console.log('kki');
+    }
+    
   }
 
   	handleKeyUp(event){
@@ -39,6 +47,7 @@ class Title extends Component {
 	}
 
   render() {
+  	console.log(this.state.playOn + ' - title')
   	const printInput = (
 		this.state.blocked === false ? 
   			<input 

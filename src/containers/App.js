@@ -9,7 +9,8 @@ class App extends Component {
 		super(props);
 		this.state = {
 			initialBoard: '', 
-			board: ''
+			board: '',
+			playOn: false
 		};
 	}
 
@@ -17,7 +18,8 @@ class App extends Component {
 		const newGame = sudoku.generate("easy")
 		this.setState({
 			initialBoard: newGame,
-			board: newGame
+			board: newGame,
+			playOn: !this.state.playOn
 		});
 	}
 
@@ -85,6 +87,7 @@ class App extends Component {
 	}
 
   render() {
+  	console.log(this.state.playOn);
     return (
 		<header>
 		   <h1>Sudoku</h1>
@@ -97,7 +100,7 @@ class App extends Component {
 		       <button onClick={this.restartGame.bind(this)}>Restart</button>
 		   </div>
 		   <Board numbers = {this.state.board} 
-		   newNumbers={this.getNewNumbers.bind(this)} test='kki'/>
+		   newNumbers={this.getNewNumbers.bind(this)} playOn={this.state.playOn}/>
 		</header>
     );
   }

@@ -29,7 +29,9 @@ getValueFrom(attr){
               blocked = true;
             }
            return <Title key={key} index={key} number={number} 
-           getValue={this.getValueFrom.bind(this)} blocked={blocked} />
+           getValue={this.getValueFrom.bind(this)} blocked={blocked} 
+           playOn={this.props.playOn}
+           />
   });   
 
     return (
