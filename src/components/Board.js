@@ -6,12 +6,6 @@ import './Style.css';
 
 class Board extends Component {
 
-/*
-  componentWillReceiveProps(nextProps) {
-    this.setState({numbers: nextProps.numbers.split('')})
-  }
-*/
-
 getValueFrom(attr){
   console.log(attr.value + 'value z getValueFrom');
   console.log(attr.index + 'index z getValueFrom');
