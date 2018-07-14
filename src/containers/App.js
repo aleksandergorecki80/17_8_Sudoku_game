@@ -1,12 +1,8 @@
+import React, { Component } from "react";
 import uuid from "uuid";
 import { hot } from "react-hot-loader";
 import Board from "../components/Board"
-import LifeStages from "../components/LifeStages"
-
-import React, { Component } from "react";
 import sudoku from 'sudoku-umd';
-
-
 
 class App extends Component {
 	constructor(props) {
@@ -27,8 +23,7 @@ class App extends Component {
 
 	checkGame(){
 		let verifiedTable = this.state.board.split('');
-			let properTable = sudoku.solve(this.state.initialBoard);
-			console.log(properTable);
+		let properTable = sudoku.solve(this.state.initialBoard);
 			 
 		if (this.state.board === properTable){
 			console.log('TACY SAMI');
@@ -38,16 +33,12 @@ class App extends Component {
 
 			 verifiedTable = verifiedTable.map((number, key) =>{
 			 	if (number === properTable[key]){
-			 		//console.log(properTable[key])
-			 	console.log('numbery takie same' + number);
 			 	return number;
 			 } else {
-			 	console.log('numbery inne' + number);
 			 	return '.';
 			 }
 			 
 			 });
-console.log(verifiedTable);
 		this.setState({
 			board: verifiedTable.join('')
 		})
@@ -70,8 +61,6 @@ console.log(verifiedTable);
       return number;
     }
   });
- // console.log(updatedArray);
-  //console.log('updatedArray');
   this.arrayToString(updatedArray);
   this.setNewNumbers(this.arrayToString(updatedArray));
 }
@@ -96,9 +85,6 @@ console.log(verifiedTable);
 	}
 
   render() {
-
-  	console.log(this.state.initialBoard + ' initialBoard');
-  	console.log(this.state.board + ' board');
     return (
 		<header>
 		   <h1>Sudoku</h1>

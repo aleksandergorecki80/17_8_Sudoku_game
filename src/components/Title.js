@@ -14,7 +14,10 @@ class Title extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-    this.setState({value: nextProps.number})
+    this.setState({
+    	value: nextProps.number,
+    	blocked: nextProps.blocked
+    })
   }
 
   	handleKeyUp(event){
@@ -42,7 +45,6 @@ class Title extends Component {
 				type="number" 
 				name="field" 
 				min="1" max="9" 
-
 				onChange={this.onAddValue.bind(this)}
 				onKeyUp={this.handleKeyUp.bind(this)}
 				onBlur={this.onSubmit.bind(this)}
