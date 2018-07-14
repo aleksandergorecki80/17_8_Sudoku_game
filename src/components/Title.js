@@ -25,25 +25,33 @@ class Title extends Component {
     });
     	    console.log('kki');
     }
-    
+    console.log(nextProps);
   }
 
   	handleKeyUp(event){
-  		if (event.target.value > 9 || event.target.value < 1){
+  		if (event.target.value > 9 || event.target.value < 1 || event.target.value === ''){
   			this.setState({
   				value: ''
   			});
   		}
   	}
 
-	onAddValue(event) {
+	onHandleChange(event) {
+		if (event.target.value === ''){
+			this.setState({
+				value: ''
+			});
+		} else {
 		this.setState({
 			value: event.target.value
-		});
+			});
+		}
 	}
 	onSubmit(){
-		const data = {value: this.state.value, index:this.state.index}
-		this.props.getValue(data);
+		if (this.state.value !== ''){
+			const data = {value: this.state.value, index:this.state.index}
+			this.props.getValue(data);
+		}
 	}
 
   render() {
@@ -54,7 +62,7 @@ class Title extends Component {
 				type="number" 
 				name="field" 
 				min="1" max="9" 
-				onChange={this.onAddValue.bind(this)}
+				onChange={this.onHandleChange.bind(this)}
 				onKeyUp={this.handleKeyUp.bind(this)}
 				onBlur={this.onSubmit.bind(this)}
 				value={this.state.value || ''}
