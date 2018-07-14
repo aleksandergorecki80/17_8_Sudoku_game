@@ -42,14 +42,20 @@ class App extends Component {
 			properTable = properTable.split('');
 
 			 verifiedTable = verifiedTable.map((number, key) =>{
-			 	if (verifiedTable[key] === properTable[key]){
+			 	if (number === properTable[key]){
 			 		//console.log(properTable[key])
 			 	console.log('numbery takie same' + number);
+			 	return number;
 			 } else {
 			 	console.log('numbery inne' + number);
+			 	return '.';
 			 }
 			 
 			 });
+console.log(verifiedTable);
+		this.setState({
+			board: verifiedTable.join('')
+		})
 		}
 	}
 
