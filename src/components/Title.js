@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LifeStages from "./LifeStages";
-import './Title.css';
+import './bordering.css';
 
 class Title extends Component {
 	constructor(props) {
@@ -42,11 +42,10 @@ class Title extends Component {
 			: <span>{this.state.value}</span>
 		);
     return (
-		<div>
-			{this.state.index}
+		<article>
+			
 			{printInput}
-			{this.props.test}
-		</div>
+		</article>
 		);
 	}
 }

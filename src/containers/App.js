@@ -12,13 +12,10 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			//initialBoard: sudoku.generate("easy"), // do zmiany pozniej
 			initialBoard: '', 
 			board: ''
 		};
 	}
-
-
 
 	newGame() {
 		const newGame = sudoku.generate("easy")
@@ -29,12 +26,10 @@ class App extends Component {
 	}
 
 	checkGame(){
-
 		let verifiedTable = this.state.board.split('');
 			let properTable = sudoku.solve(this.state.initialBoard);
 			console.log(properTable);
 			 
-
 		if (this.state.board === properTable){
 			console.log('TACY SAMI');
 		} else {
@@ -105,7 +100,7 @@ console.log(verifiedTable);
   	console.log(this.state.initialBoard + ' initialBoard');
   	console.log(this.state.board + ' board');
     return (
-		<div className="App">
+		<header>
 		   <h1>Sudoku</h1>
 		   {this.state.initialBoard}
 		   {this.state.board}
@@ -117,7 +112,7 @@ console.log(verifiedTable);
 		   </div>
 		   <Board numbers = {this.state.board} 
 		   newNumbers={this.getNewNumbers.bind(this)} test='kki'/>
-		</div>
+		</header>
     );
   }
 }

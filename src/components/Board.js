@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Title from "./Title";
-import LifeStages from "../components/LifeStages"
+import LifeStages from "../components/LifeStages";
+import './Style.css';
 
 
 class Board extends Component {
@@ -32,11 +33,9 @@ getValueFrom(attr){
   });   
 
     return (
-    <div className="Board">
-       <br />
+    <section>
         {numbersList}
-      
-    </div>
+    </section>
     );
   }
 }
