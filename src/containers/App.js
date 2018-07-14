@@ -10,12 +10,34 @@ class App extends Component {
 		this.state = {
 			initialBoard: '', 
 			board: '',
-			playOn: false
+			playOn: false,
+			level: 'easy'
 		};
 	}
 
+	selectLevel(event){
+		this.setState({
+			level: event.target.value
+		});
+	}
+
 	newGame() {
-		const newGame = sudoku.generate("easy")
+		let newGame = '';
+		switch (this.state.level){
+			case 'medium':
+				newGame = sudoku.generate("medium");
+			break;
+			case 'hard':
+				newGame = sudoku.generate("hard");
+			break;
+			case 'easy':
+				newGame = sudoku.generate("easy");
+			break;
+		}
+		this.setNewGame(newGame);
+	}
+
+	setNewGame(newGame){
 		this.setState({
 			initialBoard: newGame,
 			board: newGame,
@@ -88,12 +110,18 @@ class App extends Component {
 
   render() {
   	console.log(this.state.playOn);
+  	console.log(this.state.level);
     return (
 		<header>
 		   <h1>Sudoku</h1>
 		   {this.state.initialBoard}
 		   {this.state.board}
 		   <div className="buttons">
+		   		<select onBlur={this.selectLevel.bind(this)}>
+				  <option value="easy">Easy</option>
+				  <option value="medium">Medium</option>
+				  <option value="hard">Hard</option>
+				</select>
 		       <button onClick={this.newGame.bind(this)}>New Game</button>
 		       <button onClick={this.checkGame.bind(this)}>Check</button>
 		       <button onClick={this.solveGame.bind(this)}>Solve</button>
