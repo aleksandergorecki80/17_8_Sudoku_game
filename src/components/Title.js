@@ -44,8 +44,8 @@ class Title extends Component {
     return (
 		<div>
 			{this.state.index}
-			{this.state.blocked}
 			{printInput}
+			{this.props.test}
 		</div>
 		);
 	}

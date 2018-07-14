@@ -14,9 +14,10 @@ class App extends Component {
 		this.state = {
 			//initialBoard: sudoku.generate("easy"), // do zmiany pozniej
 			initialBoard: '', 
-			board: ""
+			board: ''
 		};
 	}
+
 
 
 	newGame() {
@@ -25,18 +26,42 @@ class App extends Component {
 			initialBoard: newGame,
 			board: newGame
 		});
-		
 	}
 
-	restartGame(){
+	checkGame(){
+
+		let verifiedTable = this.state.board.split('');
+			let properTable = sudoku.solve(this.state.initialBoard);
+			console.log(properTable);
+			 
+
+		if (this.state.board === properTable){
+			console.log('TACY SAMI');
+		} else {
+			console.log('Calkiem inni');
+			properTable = properTable.split('');
+
+			 verifiedTable = verifiedTable.map((number, key) =>{
+			 	if (verifiedTable[key] === properTable[key]){
+			 		//console.log(properTable[key])
+			 	console.log('numbery takie same' + number);
+			 } else {
+			 	console.log('numbery inne' + number);
+			 }
+			 
+			 });
+		}
+	}
+
+	solveGame(){
 		this.setState({
-			board: this.state.initialBoard
+			board: sudoku.solve(this.state.initialBoard)
 		});
 	}
 
-
-	getNewNumbers(numbers){
-		var updatedArray = this.state.board.split('');
+/*		logika podmiany nrka*/
+	getNewNumbers(numbers){	// podmienia nry w tablicy na te wpisane
+		let updatedArray = this.state.board.split('');
 	  		updatedArray = updatedArray.map((number, key) => {
     if (key === numbers.index){
       return numbers.value
@@ -50,18 +75,27 @@ class App extends Component {
   this.setNewNumbers(this.arrayToString(updatedArray));
 }
 
-arrayToString(newArray){
-  //console.log(newArray.join(''));
-  return newArray.join('');
-}
+	arrayToString(newArray){	// zamienia tablice na stringa
+	  //console.log(newArray.join(''));
+	  return newArray.join('');
+	}
 
-	setNewNumbers(string){
+	setNewNumbers(string){ //ustawia nowego stringa po wpisaniu nru
 		this.setState({
 			board: string
 		});
 	}
 
+	/*				*********				*/
+
+		restartGame(){
+		this.setState({
+			board: this.state.initialBoard
+		});
+	}
+
   render() {
+
   	console.log(this.state.initialBoard + ' initialBoard');
   	console.log(this.state.board + ' board');
     return (
@@ -70,13 +104,13 @@ arrayToString(newArray){
 		   {this.state.initialBoard}
 		   {this.state.board}
 		   <div className="buttons">
-		       <button>Check</button>
 		       <button onClick={this.newGame.bind(this)}>New Game</button>
-		       <button>Solve</button>
+		       <button onClick={this.checkGame.bind(this)}>Check</button>
+		       <button onClick={this.solveGame.bind(this)}>Solve</button>
 		       <button onClick={this.restartGame.bind(this)}>Restart</button>
 		   </div>
 		   <Board numbers = {this.state.board} 
-		   newNumbers={this.getNewNumbers.bind(this)}/>
+		   newNumbers={this.getNewNumbers.bind(this)} test='kki'/>
 		</div>
     );
   }

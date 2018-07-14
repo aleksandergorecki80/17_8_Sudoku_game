@@ -18,8 +18,6 @@ getValueFrom(attr){
 }
 
   render() {
-    console.log(this.props.numbers + 'this.props.numbers w Board');
-
     var blocked = '';
     const numbers = this.props.numbers.split('');
    const numbersList = numbers.map((number, key) =>  {
@@ -30,7 +28,7 @@ getValueFrom(attr){
               blocked = true;
             }
            return <Title key={key} index={key} number={number} 
-           getValue={this.getValueFrom.bind(this)} blocked={blocked}/>
+           getValue={this.getValueFrom.bind(this)} blocked={blocked} />
   });   
 
     return (
