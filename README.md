@@ -1,1 +1,1 @@
-https://aleksandergorecki80.github.io/16_7_Hot-Module-Replacement/
+https://aleksandergorecki80.github.io/17_8_Sudoku_game/
