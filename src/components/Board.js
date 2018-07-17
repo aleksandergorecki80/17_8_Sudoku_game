@@ -7,8 +7,8 @@ import './Style.css';
 class Board extends Component {
 
 getValueFrom(attr){
-  console.log(attr.value + 'value z getValueFrom');
-  console.log(attr.index + 'index z getValueFrom');
+//  console.log(attr.value + 'value z getValueFrom');
+  //console.log(attr.index + 'index z getValueFrom');
   this.props.newNumbers(attr);
 }
 
@@ -24,7 +24,7 @@ getValueFrom(attr){
             }
            return <Title key={key} index={key} number={number} 
            getValue={this.getValueFrom.bind(this)} blocked={blocked} 
-           playOn={this.props.playOn}
+           thisPlay={this.props.thisPlay}
            />
   });   
 

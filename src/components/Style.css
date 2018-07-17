@@ -1,5 +1,6 @@
 * {
 	box-sizing: border-box;
+	margin: 0;
 /*	border: 1px solid red ;*/
 }
 
@@ -34,10 +35,6 @@ section {
 	flex-wrap: wrap;
 	max-width: 450px;
 	justify-content: center;
-}
-
-.Title {
-	background-color: red;
 }
 
 

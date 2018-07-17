@@ -11,7 +11,9 @@ class App extends Component {
 		this.state = {
 			initialBoard: '', 
 			board: '',
-			playOn: false,
+			message: '',
+			thisPlay: false,
+			palyOn: false,
 			level: 'easy'
 		};
 	}
@@ -42,18 +44,24 @@ class App extends Component {
 		this.setState({
 			initialBoard: newGame,
 			board: newGame,
-			playOn: !this.state.playOn
+			thisPlay: !this.state.thisPlay,
+			palyOn: true,
+			message: ''
 		});
 	}
 
 	checkGame(){
-		let verifiedTable = this.state.board.split('');
+		if (this.state.palyOn!==false){
+					let verifiedTable = this.state.board.split('');
 		let properTable = sudoku.solve(this.state.initialBoard);
 			 
 		if (this.state.board === properTable){
-			console.log('TACY SAMI');
+			this.setState({
+				message: 'Game is finished, congratulations.',
+				palyOn: false
+			});
 		} else {
-			console.log('Calkiem inni');
+			
 			properTable = properTable.split('');
 
 			 verifiedTable = verifiedTable.map((number, key) =>{
@@ -65,15 +73,21 @@ class App extends Component {
 			 
 			 });
 		this.setState({
-			board: verifiedTable.join('')
+			board: verifiedTable.join(''),
+			message: 'Game is not finished.'
 		})
+		}
 		}
 	}
 
 	solveGame(){
-		this.setState({
-			board: sudoku.solve(this.state.initialBoard)
+		if(this.state.palyOn!==false){
+					this.setState({
+			board: sudoku.solve(this.state.initialBoard),
+			message: 'Game over.',
+			palyOn: false
 		});
+		}
 	}
 
 /*		logika podmiany nrka*/
@@ -97,7 +111,8 @@ class App extends Component {
 
 	setNewNumbers(string){ //ustawia nowego stringa po wpisaniu nru
 		this.setState({
-			board: string
+			board: string,
+			message: ''
 		});
 	}
 
@@ -105,18 +120,21 @@ class App extends Component {
 
 		restartGame(){
 		this.setState({
-			board: this.state.initialBoard
+			board: this.state.initialBoard,
+			message: '',
+			palyOn: true
 		});
 	}
 
   render() {
-  	console.log(this.state.playOn);
-  	console.log(this.state.level);
+  	//console.log(this.state.thisPlay + 'thisPlay status');
+  	//console.log(this.state.palyOn + ' palyOn status');
+  	console.log(this.state.level + ' level');
+  	
     return (
 		<div className={styles.Container}>
 		   <h1>Sudoku</h1>
-		   {this.state.initialBoard}
-		   {this.state.board}
+		  <p className={styles.Message}> {this.state.message}</p>
 		   <div className={styles.Buttons}>
 		   		<select onBlur={this.selectLevel.bind(this)}>
 				  <option value="easy">Easy</option>
@@ -129,7 +147,7 @@ class App extends Component {
 		       <button onClick={this.restartGame.bind(this)}>Restart</button>
 		   </div>
 		   <Board numbers = {this.state.board} 
-		   newNumbers={this.getNewNumbers.bind(this)} playOn={this.state.playOn}/>
+		   newNumbers={this.getNewNumbers.bind(this)} thisPlay={this.state.thisPlay}/>
 		</div>
     );
   }
