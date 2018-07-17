@@ -71,7 +71,6 @@ class Title extends Component {
 		);
     return (
 		<article>
-			
 			{printInput}
 		</article>
 		);

@@ -3,6 +3,7 @@ import uuid from "uuid";
 import { hot } from "react-hot-loader";
 import Board from "../components/Board"
 import sudoku from 'sudoku-umd';
+import styles from "./App.css";
 
 class App extends Component {
 	constructor(props) {
@@ -112,11 +113,11 @@ class App extends Component {
   	console.log(this.state.playOn);
   	console.log(this.state.level);
     return (
-		<header>
+		<div className={styles.Container}>
 		   <h1>Sudoku</h1>
 		   {this.state.initialBoard}
 		   {this.state.board}
-		   <div className="buttons">
+		   <div className={styles.Buttons}>
 		   		<select onBlur={this.selectLevel.bind(this)}>
 				  <option value="easy">Easy</option>
 				  <option value="medium">Medium</option>
@@ -129,7 +130,7 @@ class App extends Component {
 		   </div>
 		   <Board numbers = {this.state.board} 
 		   newNumbers={this.getNewNumbers.bind(this)} playOn={this.state.playOn}/>
-		</header>
+		</div>
     );
   }
 }

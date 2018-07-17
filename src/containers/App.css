@@ -1,0 +1,29 @@
+.app {
+	margin: 0;
+	background-color: #FFB1B1;
+}
+
+.Container{
+	margin: 0 auto;
+	max-width: 450px;
+	background-color: #49C5B6;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+}
+
+.Buttons{
+	display: flex;
+    justify-content: space-evenly;
+}
+
+select, button {
+	width: 25%;
+	padding: 5px;
+	background-color: #FE4741;
+	border: 1px solid black;
+	cursor: pointer;
+	outline: none;
+}
