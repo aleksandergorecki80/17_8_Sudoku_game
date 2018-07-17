@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Title from "./Title";
-import LifeStages from "../components/LifeStages";
 import "./Style.css";
 
 class Board extends Component {

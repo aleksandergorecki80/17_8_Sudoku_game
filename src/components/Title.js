@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import LifeStages from "./LifeStages";
 import styles from "./bordering.css";
 
 class Title extends Component {
