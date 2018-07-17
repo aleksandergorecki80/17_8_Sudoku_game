@@ -1,33 +1,27 @@
 h1 {
-	text-align: center;
-	color: white;
-	padding-top: 10px;
+  text-align: center;
+  color: black;
+  padding-top: 10px;
 }
 select, button {
-	width: 25%;
-	padding: 5px;
-	background-color: #FE4741;
-	border: 1px solid black;
-	cursor: pointer;
-	outline: none;
+  width: 25%;
+  padding: 5px;
+  background-color: #FE4741;
+  border: 1px solid black;
+  cursor: pointer;
+  outline: none;
 }
-
 .Container {
-	margin: 0 auto;
-	max-width: 450px;
-	background-color: #49C5B6;
+  margin: 0 auto;
+  max-width: 450px;
+  background-color: #49C5B6;
 }
-
-
 .Buttons {
-	margin-top: 10px;
-	display: flex;
-    justify-content: space-evenly;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
 }
-
-
-
 .Message {
-	color: white;
-	text-align: center;
+  color: white;
+  text-align: center;
 }
