@@ -12,7 +12,7 @@ class App extends Component {
       board: "",
       message: "",
       thisPlay: false,
-      palyOn: false,
+      playOn: false,
       level: "easy"
     };
   }
@@ -23,40 +23,40 @@ class App extends Component {
     });
   }
 
-  newGame() {
-    let newGame = "";
-    switch (this.state.level) {
-      case "medium":
-        newGame = sudoku.generate("medium");
-        break;
-      case "hard":
-        newGame = sudoku.generate("hard");
-        break;
-      case "easy":
-        newGame = sudoku.generate("easy");
-        break;
-    }
-    this.setNewGame(newGame);
-  }
+  // newGame() {
+  //   let newGame = "";
+  //   switch (this.state.level) {
+  //     case "medium":
+  //       newGame = sudoku.generate(this.state.level);
+  //       break;
+  //     case "hard":
+  //       newGame = sudoku.generate("hard");
+  //       break;
+  //     case "easy":
+  //       newGame = sudoku.generate("easy");
+  //       break;
+  //   }
+  //   this.setNewGame(newGame);
+  // }
 
-  setNewGame(newGame) {
+  setNewGame() {
     this.setState({
-      initialBoard: newGame,
-      board: newGame,
+      initialBoard: sudoku.generate(this.state.level),
+      board: sudoku.generate(this.state.level),
       thisPlay: !this.state.thisPlay,
-      palyOn: true,
+      playOn: true,
       message: ""
     });
   }
 
   checkGame() {
-    if (this.state.palyOn !== false) {
+    if (this.state.playOn !== false) {
       let verifiedTable = this.state.board.split("");
       let properTable = sudoku.solve(this.state.initialBoard);
       if (this.state.board === properTable) {
         this.setState({
           message: "Game is finished, congratulations.",
-          palyOn: false
+          playOn: false
         });
       } else {
         properTable = properTable.split("");
@@ -76,11 +76,11 @@ class App extends Component {
   }
 
   solveGame() {
-    if (this.state.palyOn !== false) {
+    if (this.state.playOn !== false) {
       this.setState({
         board: sudoku.solve(this.state.initialBoard),
         message: "Game over.",
-        palyOn: false
+        playOn: false
       });
     }
   }
@@ -113,7 +113,7 @@ class App extends Component {
     this.setState({
       board: this.state.initialBoard,
       message: "",
-      palyOn: true
+      playOn: true
     });
   }
 
@@ -128,7 +128,7 @@ class App extends Component {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
-          <button onClick={this.newGame.bind(this)}>New Game</button>
+          <button onClick={this.setNewGame.bind(this)}>New Game</button>
           <button onClick={this.checkGame.bind(this)}>Check</button>
           <button onClick={this.solveGame.bind(this)}>Solve</button>
           <button onClick={this.restartGame.bind(this)}>Restart</button>
