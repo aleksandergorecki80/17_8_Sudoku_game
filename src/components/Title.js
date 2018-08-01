@@ -37,15 +37,9 @@ class Title extends Component {
   }
 
   onHandleChange(event) {
-    if (event.target.value === "") {
-      this.setState({
-        value: ""
-      });
-    } else {
       this.setState({
         value: event.target.value
       });
-    }
   }
   onSubmit() {
     if (this.state.value !== "") {
