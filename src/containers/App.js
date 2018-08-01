@@ -23,23 +23,24 @@ class App extends Component {
     });
   }
 
-  newGame() {
-    let newGame = "";
-    switch (this.state.level) {
-      case "medium":
-        newGame = sudoku.generate("medium");
-        break;
-      case "hard":
-        newGame = sudoku.generate("hard");
-        break;
-      case "easy":
-        newGame = sudoku.generate("easy");
-        break;
-    }
-    this.setNewGame(newGame);
-  }
+  // newGame() {
+  //   let newGame = "";
+  //   switch (this.state.level) {
+  //     case "medium":
+  //       newGame = sudoku.generate("medium");
+  //       break;
+  //     case "hard":
+  //       newGame = sudoku.generate("hard");
+  //       break;
+  //     case "easy":
+  //       newGame = sudoku.generate("easy");
+  //       break;
+  //   }
+  //   this.setNewGame(newGame);
+  // }
 
-  setNewGame(newGame) {
+  setNewGame() {
+    const newGame = sudoku.generate(this.state.level); 
     this.setState({
       initialBoard: newGame,
       board: newGame,
@@ -60,8 +61,8 @@ class App extends Component {
         });
       } else {
         properTable = properTable.split("");
-        verifiedTable = verifiedTable.map((number, key) => {
-          if (number === properTable[key]) {
+        verifiedTable = verifiedTable.map((number, index) => {
+          if (number === properTable[index]) {
             return number;
           } else {
             return ".";
@@ -118,6 +119,9 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.initialBoard);
+    console.log(this.state.board);
+    console.log(this.state.level);
     return (
       <div className={styles.Container}>
         <h1>Sudoku</h1>
@@ -128,7 +132,7 @@ class App extends Component {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
-          <button onClick={this.newGame.bind(this)}>New Game</button>
+          <button onClick={this.setNewGame.bind(this)}>New Game</button>
           <button onClick={this.checkGame.bind(this)}>Check</button>
           <button onClick={this.solveGame.bind(this)}>Solve</button>
           <button onClick={this.restartGame.bind(this)}>Restart</button>
