@@ -27,7 +27,7 @@ class App extends Component {
   //   let newGame = "";
   //   switch (this.state.level) {
   //     case "medium":
-  //       newGame = sudoku.generate(this.state.level);
+  //       newGame = sudoku.generate("medium");
   //       break;
   //     case "hard":
   //       newGame = sudoku.generate("hard");
@@ -39,7 +39,7 @@ class App extends Component {
   //   this.setNewGame(newGame);
   // }
 
-  setNewGame() {
+  setNewGame(newGame) {
     this.setState({
       initialBoard: sudoku.generate(this.state.level),
       board: sudoku.generate(this.state.level),
@@ -128,7 +128,7 @@ class App extends Component {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
-          <button onClick={this.setNewGame.bind(this)}>New Game</button>
+          <button onClick={this.newGame.bind(this)}>New Game</button>
           <button onClick={this.checkGame.bind(this)}>Check</button>
           <button onClick={this.solveGame.bind(this)}>Solve</button>
           <button onClick={this.restartGame.bind(this)}>Restart</button>
