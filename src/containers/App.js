@@ -12,7 +12,7 @@ class App extends Component {
       board: "",
       message: "",
       thisPlay: false,
-      palyOn: false,
+      boardOn: false,
       level: "easy"
     };
   }
@@ -23,53 +23,36 @@ class App extends Component {
     });
   }
 
-  // newGame() {
-  //   let newGame = "";
-  //   switch (this.state.level) {
-  //     case "medium":
-  //       newGame = sudoku.generate("medium");
-  //       break;
-  //     case "hard":
-  //       newGame = sudoku.generate("hard");
-  //       break;
-  //     case "easy":
-  //       newGame = sudoku.generate("easy");
-  //       break;
-  //   }
-  //   this.setNewGame(newGame);
-  // }
-
   setNewGame() {
     const newGame = sudoku.generate(this.state.level); 
     this.setState({
       initialBoard: newGame,
       board: newGame,
       thisPlay: !this.state.thisPlay,
-      palyOn: true,
+      boardOn: true,
       message: ""
     });
   }
 
   checkGame() {
-    if (this.state.palyOn !== false) {
-      let verifiedNumbers = this.state.board.split("");
-      let properTable = sudoku.solve(this.state.initialBoard);
-      if (this.state.board === properTable) {
+    if (this.state.boardOn !== false) {
+      const numbersToCheck = this.state.board.split("");
+      const solutionNumbers = sudoku.solve(this.state.initialBoard);
+      if (this.state.board === solutionNumbers) {
         this.setState({
-          message: "Game is finished, congratulations.",
-          palyOn: false
+          message: "Game is finished, congratulations."
         });
       } else {
-        properTable = properTable.split("");
-        verifiedNumbers = verifiedNumbers.map((number, index) => {
-          if (number === properTable[index]) {
+        const solutionNumbersArr = solutionNumbers.split("");
+        const checkedNumbers = numbersToCheck.map((number, index) => {
+          if (number === solutionNumbersArr[index]) {
             return number;
           } else {
             return ".";
           }
         });
         this.setState({
-          board: verifiedNumbers.join(""),
+          board: checkedNumbers.join(""),
           message: "Game is not finished."
         });
       }
@@ -77,11 +60,10 @@ class App extends Component {
   }
 
   solveGame() {
-    if (this.state.palyOn !== false) {
+    if (this.state.boardOn !== false) {
       this.setState({
         board: sudoku.solve(this.state.initialBoard),
-        message: "Game over.",
-        palyOn: false
+        message: "Game over."
       });
     }
   }
@@ -111,17 +93,16 @@ class App extends Component {
   }
 
   restartGame() {
-    this.setState({
-      board: this.state.initialBoard,
-      message: "",
-      palyOn: true
-    });
+    if (this.state.boardOn !== false) {
+      this.setState({
+        board: this.state.initialBoard,
+        message: "",
+        boardOn: true
+      });
+    }
   }
 
   render() {
-    console.log(this.state.initialBoard);
-    console.log(this.state.board);
-    console.log(this.state.level);
     return (
       <div className={styles.Container}>
         <h1>Sudoku</h1>

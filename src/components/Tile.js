@@ -28,7 +28,6 @@ handleKeyUp(event) {
   if(event.target.value > 9){
       const nString = event.target.value.toString();
       const digits = nString.split("");
-      console.log(digits);
       let lastDigit = digits[digits.length-1];
       if (lastDigit == 0){lastDigit = digits[digits.length-2];}
     this.setState({
