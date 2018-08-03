@@ -33,10 +33,6 @@ handleKeyUp(event) {
     this.setState({
          value: lastDigit
      });
-  } else if (event.target.value === ""){
-    this.setState({
-         value: ""
-     });
   }
 }
 
