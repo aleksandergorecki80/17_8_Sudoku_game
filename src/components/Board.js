@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Title from "./Title";
+import Tile from "./Tile";
 import "./Style.css";
 
 class Board extends Component {
@@ -17,7 +17,7 @@ class Board extends Component {
         blocked = true;
       }
       return (
-        <Title
+        <Tile
           key={key}
           index={key}
           number={number}

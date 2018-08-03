@@ -24,17 +24,22 @@ class Title extends Component {
     }
   }
 
-  handleKeyUp(event) {
-    if (
-      event.target.value > 9 ||
-      event.target.value < 1 ||
-      event.target.value === ""
-    ) {
-      this.setState({
-        value: ""
-      });
-    }
+handleKeyUp(event) {
+  if(event.target.value > 9){
+      const nString = event.target.value.toString();
+      const digits = nString.split("");
+      console.log(digits);
+      let lastDigit = digits[digits.length-1];
+      if (lastDigit == 0){lastDigit = digits[digits.length-2];}
+    this.setState({
+         value: lastDigit
+     });
+  } else if (event.target.value === ""){
+    this.setState({
+         value: ""
+     });
   }
+}
 
   onHandleChange(event) {
       this.setState({
@@ -59,6 +64,7 @@ class Title extends Component {
           onChange={this.onHandleChange.bind(this)}
           onKeyUp={this.handleKeyUp.bind(this)}
           onBlur={this.onSubmit.bind(this)}
+          onMouseOut={this.onSubmit.bind(this)}
           value={this.state.value || ""}
         />
       ) : (

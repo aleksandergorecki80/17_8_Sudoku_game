@@ -1,0 +1,18 @@
+.Field {
+  border: 1px solid #00ABFD;
+  width: 11.1%;
+  max-width: 50px;
+}
+
+.Field:nth-child(3n):not(:nth-child(9n)) {
+  border-right: 3px solid black;
+}
+
+%thick-border-bottom {
+  border-bottom: 3px solid black;
+}
+@for $i from 0 through 8 {
+  .Field:nth-child(27n - #{$i}):not(:nth-child(81n - #{$i})) {
+    @extend %thick-border-bottom;
+  }
+}

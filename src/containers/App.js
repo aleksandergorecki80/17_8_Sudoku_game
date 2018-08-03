@@ -52,7 +52,7 @@ class App extends Component {
 
   checkGame() {
     if (this.state.palyOn !== false) {
-      let verifiedTable = this.state.board.split("");
+      let verifiedNumbers = this.state.board.split("");
       let properTable = sudoku.solve(this.state.initialBoard);
       if (this.state.board === properTable) {
         this.setState({
@@ -61,7 +61,7 @@ class App extends Component {
         });
       } else {
         properTable = properTable.split("");
-        verifiedTable = verifiedTable.map((number, index) => {
+        verifiedNumbers = verifiedNumbers.map((number, index) => {
           if (number === properTable[index]) {
             return number;
           } else {
@@ -69,7 +69,7 @@ class App extends Component {
           }
         });
         this.setState({
-          board: verifiedTable.join(""),
+          board: verifiedNumbers.join(""),
           message: "Game is not finished."
         });
       }
@@ -127,7 +127,7 @@ class App extends Component {
         <h1>Sudoku</h1>
         <p className={styles.Message}> {this.state.message}</p>
         <div className={styles.Buttons}>
-          <select onBlur={this.selectLevel.bind(this)}>
+          <select onChange={this.selectLevel.bind(this)}>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
