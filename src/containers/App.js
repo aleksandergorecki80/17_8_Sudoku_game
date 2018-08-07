@@ -79,34 +79,18 @@ class App extends Component {
     });
   }
 
-  // restartGame() {
-  //   if (this.state.boardOn) {
-  //     this.setState({
-  //       board: this.state.initialBoard,
-  //       message: "",
-  //       boardOn: true
-  //     });
-  //   }
-  // }
   restartGame() {
     if (this.state.boardOn) {
-
-
-this.setState((prevState) => {
-  return {
-    board: prevState.board,
-    message: "",
-     boardOn: true
-  };
-});
-
-
+      this.setState({
+        board: this.state.initialBoard,
+        message: "",
+        boardOn: true
+      });
     }
   }
 
-
   render() {
-    const cursor = (this.state.boardOn) ? styles.Pointer : styles.NoCursor;
+    const cursor = this.state.boardOn ? styles.Pointer : styles.NoCursor;
     return (
       <div className={styles.Container}>
         <h1>Sudoku</h1>
@@ -118,9 +102,15 @@ this.setState((prevState) => {
             <option value="hard">Hard</option>
           </select>
           <button onClick={this.setNewGame.bind(this)}>New Game</button>
-          <button onClick={this.checkGame.bind(this)} className={cursor}>Check</button>
-          <button onClick={this.solveGame.bind(this)} className={cursor}>Solve</button>
-          <button onClick={this.restartGame.bind(this)} className={cursor}>Restart</button>
+          <button onClick={this.checkGame.bind(this)} className={cursor}>
+            Check
+          </button>
+          <button onClick={this.solveGame.bind(this)} className={cursor}>
+            Solve
+          </button>
+          <button onClick={this.restartGame.bind(this)} className={cursor}>
+            Restart
+          </button>
         </div>
         <Board
           numbers={this.state.board}
