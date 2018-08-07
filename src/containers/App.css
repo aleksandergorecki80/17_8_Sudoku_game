@@ -25,3 +25,9 @@ select, button {
   color: white;
   text-align: center;
 }
+.Pointer {
+  cursor: pointer;
+}
+.NoCursor {
+  cursor: auto;
+}

@@ -24,22 +24,24 @@ class Title extends Component {
     }
   }
 
-handleKeyUp(event) {
-  if(event.target.value > 9){
+  handleKeyUp(event) {
+    if (event.target.value > 9) {
       const nString = event.target.value.toString();
       const digits = nString.split("");
-      let lastDigit = digits[digits.length-1];
-      if (lastDigit == 0){lastDigit = digits[digits.length-2];}
-    this.setState({
-         value: lastDigit
-     });
+      let lastDigit = digits[digits.length - 1];
+      if (lastDigit == 0) {
+        lastDigit = digits[digits.length - 2];
+      }
+      this.setState({
+        value: lastDigit
+      });
+    }
   }
-}
 
   onHandleChange(event) {
-      this.setState({
-        value: event.target.value
-      });
+    this.setState({
+      value: event.target.value
+    });
   }
   onSubmit() {
     if (this.state.value !== "") {

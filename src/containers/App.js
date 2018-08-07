@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   setNewGame() {
-    const newGame = sudoku.generate(this.state.level); 
+    const newGame = sudoku.generate(this.state.level);
     this.setState({
       initialBoard: newGame,
       board: newGame,
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   checkGame() {
-    if (this.state.boardOn !== false) {
+    if (this.state.boardOn) {
       const numbersToCheck = this.state.board.split("");
       const solutionNumbers = sudoku.solve(this.state.initialBoard);
       if (this.state.board === solutionNumbers) {
@@ -44,15 +44,11 @@ class App extends Component {
         });
       } else {
         const solutionNumbersArr = solutionNumbers.split("");
-        const checkedNumbers = numbersToCheck.map((number, index) => {
-          if (number === solutionNumbersArr[index]) {
-            return number;
-          } else {
-            return ".";
-          }
-        });
+        const wrongToEmpty = (number, index) =>
+          number === solutionNumbersArr[index] ? number : ".";
+        const checkedNumbers = numbersToCheck.map(wrongToEmpty).join("");
         this.setState({
-          board: checkedNumbers.join(""),
+          board: checkedNumbers,
           message: "Game is not finished."
         });
       }
@@ -60,7 +56,7 @@ class App extends Component {
   }
 
   solveGame() {
-    if (this.state.boardOn !== false) {
+    if (this.state.boardOn) {
       this.setState({
         board: sudoku.solve(this.state.initialBoard),
         message: "Game over."
@@ -69,20 +65,11 @@ class App extends Component {
   }
 
   getNewNumbers(numbers) {
-    let updatedArray = this.state.board.split("");
-    updatedArray = updatedArray.map((number, key) => {
-      if (key === numbers.index) {
-        return numbers.value;
-      } else {
-        return number;
-      }
-    });
-    this.arrayToString(updatedArray);
-    this.setNewNumbers(this.arrayToString(updatedArray));
-  }
-
-  arrayToString(newArray) {
-    return newArray.join("");
+    const updatedArray = this.state.board.split("");
+    const putInTheNumber = (number, key) =>
+      key === numbers.index ? numbers.value : number;
+    const updatetStringOfNumbers = updatedArray.map(putInTheNumber).join("");
+    this.setNewNumbers(updatetStringOfNumbers);
   }
 
   setNewNumbers(string) {
@@ -92,17 +79,34 @@ class App extends Component {
     });
   }
 
+  // restartGame() {
+  //   if (this.state.boardOn) {
+  //     this.setState({
+  //       board: this.state.initialBoard,
+  //       message: "",
+  //       boardOn: true
+  //     });
+  //   }
+  // }
   restartGame() {
-    if (this.state.boardOn !== false) {
-      this.setState({
-        board: this.state.initialBoard,
-        message: "",
-        boardOn: true
-      });
+    if (this.state.boardOn) {
+
+
+this.setState((prevState) => {
+  return {
+    board: prevState.board,
+    message: "",
+     boardOn: true
+  };
+});
+
+
     }
   }
 
+
   render() {
+    const cursor = (this.state.boardOn) ? styles.Pointer : styles.NoCursor;
     return (
       <div className={styles.Container}>
         <h1>Sudoku</h1>
@@ -114,9 +118,9 @@ class App extends Component {
             <option value="hard">Hard</option>
           </select>
           <button onClick={this.setNewGame.bind(this)}>New Game</button>
-          <button onClick={this.checkGame.bind(this)}>Check</button>
-          <button onClick={this.solveGame.bind(this)}>Solve</button>
-          <button onClick={this.restartGame.bind(this)}>Restart</button>
+          <button onClick={this.checkGame.bind(this)} className={cursor}>Check</button>
+          <button onClick={this.solveGame.bind(this)} className={cursor}>Solve</button>
+          <button onClick={this.restartGame.bind(this)} className={cursor}>Restart</button>
         </div>
         <Board
           numbers={this.state.board}

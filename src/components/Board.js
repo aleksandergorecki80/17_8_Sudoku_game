@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
-import "./Style.css";
+import "./style.css";
 
 class Board extends Component {
   getValueFrom(attr) {
@@ -32,3 +32,4 @@ class Board extends Component {
 }
 
 export default Board;
+
