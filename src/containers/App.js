@@ -81,11 +81,11 @@ class App extends Component {
 
   restartGame() {
     if (this.state.boardOn) {
-      this.setState({
+      this.setState(prevState => ({
         board: prevState.initialBoard,
         message: "",
         boardOn: true
-      });
+      }));
     }
   }
 
