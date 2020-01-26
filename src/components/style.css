@@ -5,8 +5,9 @@
   margin: 0;
 }
 body {
-  background-color: #FFB1B1;
   font-family: 'Roboto', sans-serif;
+  background-image: url("/img/play-sudoku.jpg");
+
 }
 span {
   min-height: 44px;
@@ -32,4 +33,5 @@ section {
   flex-wrap: wrap;
   max-width: 450px;
   justify-content: center;
+  width: 450px;
 }
