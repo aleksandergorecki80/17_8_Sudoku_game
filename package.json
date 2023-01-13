@@ -23,7 +23,7 @@
     "react-hot-loader": "^4.3.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.11.0",
-    "webpack-cli": "^3.0.2",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.1.4"
   },
   "description": "https://github.com/aleksandergorecki80/17_8_Sudoku_game/",
